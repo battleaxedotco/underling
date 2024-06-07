@@ -3,6 +3,7 @@
 Visual JSON editor for [Overlord 2.0](https://battleaxe.co/overlord) update notifications.
 
 JSON at: https://battleaxe.dev/underling/
+
 Builder at: https://battleaxe.dev/underling/builder
 
 ![UI](https://github.com/battleaxedotco/underling/assets/8580225/de93e4e2-29ae-4ee5-aaf8-5c2953639bb5)
@@ -15,6 +16,9 @@ Builder at: https://battleaxe.dev/underling/builder
 4. Click **Copy JSON** and overwrite `index.json`
 5. Push the commit to publish JSON to https://battleaxe.dev/underling/
 
+### Why?
+
+Because I'm not good at enforcing my own JSON structure and I'm trying to be better at [semantic versioning](https://semver.org/). 
 
 ### Disclaimer
 
