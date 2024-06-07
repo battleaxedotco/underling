@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Underling builder</title>
+  <style>
+    body {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      margin: 0;
+      background: #111;
+      color: #fff;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid #fff;
+      transition: all 0.1s ease-in-out;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.0);
+      border: white 1px solid;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      font: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 0.1s ease-in-out;
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    #app {
+      /* min-height: 100vh; */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .edit-button {
+      height: 100%;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .edit-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .edit-button svg {
+      stroke: rgba(255, 255, 255, 0.3);
+      width: 16px;
+      height: 16px;
+    }
+    .save-button svg {
+      stroke: white;
+    }
+    .release {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px;
+    }
+    .bar, .notes {
+      display: flex;
+      justify-content: start;
+      gap: 24px;
+      align-items: center;
+      /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+    }
+    .bar .data > * {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+    .notes {
+      padding: 10px 0;
+      width: 100%;
+      align-items: start;
+    }
+
+    .inner {
+      max-width: 800px;
+      min-width: 800px;
+      margin: 0 auto;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 300;
+      gap: 32px;
+      border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+      /* top sticky header */
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 8px;
+      /* width: 100%; */
+      height: fit-content;
+      background: #111;
+    }
+
+    .header>div:first-child {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    /* first cell of header */
+    .header>div>div:first-child {
+      font-size: 32px;
+      align-self: center;
+    }
+
+    /* second cell of header */
+    .header>div:nth-child(2) {
+      font-size: 16px;
+      line-height: 1.1em;
+      padding-right: 20px;
+      align-self: flex-end;
+      font-style: italic;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="header">
+      <div>
+        <div>Underling</div>
+        <div>Overlord update builder</div>
+      </div>
+      <button @click="copyJson">{{ copied ? "Copied" : "Copy JSON" }}</button>
+    </div>
+
+    <div class="inner">
+      <!-- button to create a new release at the start of the list. version number increments the second digit -->
+      <button @click="jsonData.unshift({ version: incrementMinor(jsonData[0]), date: new Date().toISOString().split('T')[0], notes: '', patches: [] })">New release</button>
+
+      <!-- loop through each of jsonData -->
+      <div v-for="(release, idx) in jsonData" :key="idx" >
+        <!-- display the item data here -->
+        <div class="release">
+          <div class="bar">
+            <div class="data">
+              <div v-if="editing != `release-version-${idx}`">
+                <div class="edit-button" v-html="editButton()" @click="editBlock(`release-version-${idx}`)"></div>
+                <p>{{ release.version }}</p>
+              </div>
+              <div v-else>
+                <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`release-version-${idx}`)"></div>
+                <input v-model="release.version" @keyup.enter="editing = ''">
+              </div>
+            </div>
+            //
+            <div class="data">
+              <div v-if="editing != `release-date-${idx}`">
+                <div class="edit-button" v-html="editButton()" @click="editBlock(`release-date-${idx}`)"></div>
+                <p>{{ release.date | formatDate }}</p>
+              </div>
+              <div v-else>
+                <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`release-date-${idx}`)"></div>
+                <input v-model="release.date" @keyup.enter="editing = ''">
+              </div>
+            </div>
+          </div>
+         
+
+          <div>
+            <div v-if="editing != `release-notes-${idx}`" class="notes">
+              <div class="edit-button" v-html="editButton()" @click="editBlock(`release-notes-${idx}`)"></div>
+              <div v-html="parseMarkdown(release.notes)"></div>
+            </div>
+            <div v-else class="notes">
+              <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`release-notes-${idx}`)"></div>
+              <textarea v-model="release.notes" style="width: inherit; height: 300px;"></textarea>
+            </div>
+          </div>
+
+
+          <!-- button to create a new patch at the start of the list. version number increments the third digit -->
+          <button @click="jsonData[idx].patches.unshift({ version: incrementPatch(jsonData[idx]), date: new Date().toISOString().split('T')[0], notes: '' })">New patch</button>
+
+          <!-- patches -->
+          <!-- loop through each of jsonData -->
+          <div v-for="(patch, pidx) in release.patches" :key="`patch-${idx}-${pidx}`">
+            <!-- display the item data here -->
+            <div class="release">
+
+              <div class="bar">
+                <div class="data">
+                  <div v-if="editing != `patch-${idx}-version-${pidx}`">
+                    <div class="edit-button" v-html="editButton()" @click="editBlock(`patch-${idx}-version-${pidx}`)"></div>
+                    <p>{{ patch.version }}</p>
+                  </div>
+                  <div v-else>
+                    <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`patch-${idx}-version-${pidx}`)"></div>
+                    <input v-model="patch.version" @keyup.enter="editing = ''">
+                  </div>
+                </div>
+                //
+                <div class="data">
+                  <div v-if="editing != `patch-${idx}-date-${pidx}`">
+                    <div class="edit-button" v-html="editButton()" @click="editBlock(`patch-${idx}-date-${pidx}`)"></div>
+                    <p>{{ patch.date | formatDate }}</p>
+                  </div>
+                  <div v-else>
+                    <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`patch-${idx}-date-${pidx}`)"></div>
+                    <input v-model="patch.date" @keyup.enter="editing = ''">
+                  </div>
+                </div>
+              </div>
+          
+          
+              <div>
+                <div v-if="editing != `patch-${idx}-notes-${pidx}`" class="notes">
+                  <div class="edit-button" v-html="editButton()" @click="editBlock(`patch-${idx}-notes-${pidx}`)"></div>
+                  <div v-html="parseMarkdown(patch.notes)"></div>
+                </div>
+                <div v-else class="notes">
+                  <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`patch-${idx}-notes-${pidx}`)"></div>
+                  <textarea v-model="patch.notes" style="width: inherit; height: 300px;"></textarea>
+                </div>
+              </div>
+            </div>
+          
+            <!-- button to delete the release -->
+            <div class="release edit-button" @click="jsonData[idx].patches.splice(pidx, 1)">Delete</div>
+          </div>
+
+          
+          
+        </div>
+
+        <!-- button to delete the release -->
+        <div class="release edit-button" @click="jsonData.splice(idx, 1)">Delete</div>
+      </div>
+
+
+    </div>
+
+    <!-- footer with link to github -->
+    <footer style="position: fixed; bottom: 0; left: 0; right: 0; padding: 20px; text-align: center;">
+      Built by <a href="https://battleaxe.co" target="_blank" rel="noopener noreferrer">Battle Axe</a> |
+      <a href="https://github.com/battleaxedotco/underling" target="_blank">Github</a>
+    </footer>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+  <script>
+
+
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          copied: false,
+          editing: '',
+          jsonData: {},
+        };
+      },
+      mounted() {
+        this.readJson()
+      },
+      methods: {
+        editBlock(id) {
+          
+          this.editing = (this.editing == '') ? id : ''
+        },
+        readJson() {
+          // read the json file at ../index.json and update the jsonData
+          fetch('../index.json')
+            .then((response) => response.json())
+            .then((json) => {
+              this.jsonData = json;
+            });
+        },
+        copyJson () {
+          // stringify the jsonData and copy it to the clipboard
+          navigator.clipboard.writeText(JSON.stringify(this.jsonData, null, 2));
+
+          this.copied = true;
+          setTimeout(() => {
+            this.copied = false;
+          }, 1000);
+        },
+        parseMarkdown(text) {
+          // parse markdown to html
+          const toHTML = text
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>') // h3 tag
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>') // h2 tag
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>') // h1 tag
+            .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>') // bold text
+            .replace(/\*(.*)\*/gim, '<i>$1</i>') // italic text
+            // if are 2 line breaks and lines with dashes, group each line with a dash until the end of the string or the next 2 line breaks within a ul and li for each line
+            .replace(/(\r\n|\r|\n){2}(- .*(\r\n|\r|\n))+/g, (match) => {
+              const lines = match.split(/(\r\n|\r|\n)/);
+              const listItems = lines.filter((line) => line.trim() !== '').map((line) => line.replace(/(- )/, '<li>').replace(/(\r\n|\r|\n)/, '</li>')).join('');
+              return `<ul>${listItems}</ul>`;
+            })
+            .replace(/(?:\r\n|\r|\n)/g, '<br>')
+          return toHTML.trim(); // using trim method to remove whitespace
+        },
+        incrementMinor(group) {
+          const version = group.version
+          // increment the second digit of the version number
+          const [major, minor, patch] = version.split('.');
+          return `${major}.${parseInt(minor) + 1}.${patch}`;
+        },
+        incrementPatch(group) {
+          const version = (group.patches.length) ? group.patches[0].version : group.version
+          // increment the third digit of the version number
+          const [major, minor, patch] = version.split('.');
+          return `${major}.${minor}.${parseInt(patch) + 1}`;
+        },
+        editButton() {
+          return `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+          `
+        },
+        saveButton() {
+          return `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>          `
+        }
+      },
+      filters: {
+        dollars(value) {
+          // add a dollar sign and commas
+          return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        formatDate(value) {
+          // format the date
+          const date = new Date(value);
+          // one more day
+          date.setDate(date.getDate() + 1);
+          return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          });
+        }
+      },
+    });
+  </script>
+
+</body>
+
+</html>
