@@ -3,7 +3,13 @@
     "version": "0.3.0",
     "date": "2024-06-10",
     "notes": "Update notifications in app",
-    "patches": []
+    "patches": [
+      {
+        "version": "0.3.1",
+        "date": "2024-06-10",
+        "notes": "Make `latestAvailableVersion` reactive"
+      }
+    ]
   },
   {
     "version": "0.2.0",
