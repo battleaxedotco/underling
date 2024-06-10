@@ -5,6 +5,11 @@
     "notes": "Update notifications in app",
     "patches": [
       {
+        "version": "0.3.2",
+        "date": "2024-06-10",
+        "notes": "Ae group layers take the Null label color"
+      },
+      {
         "version": "0.3.1",
         "date": "2024-06-10",
         "notes": "Make `latestAvailableVersion` reactive"
