@@ -5,6 +5,16 @@
     "notes": "Update notifications in app",
     "patches": [
       {
+        "version": "0.3.4",
+        "date": "2024-06-11",
+        "notes": "\n\n- Better offline handling\n- Group colors also for Figma frames\n- Markdown parsing for update list\n"
+      },
+      {
+        "version": "0.3.3",
+        "date": "2024-06-11",
+        "notes": "# Markdown\n## Parsing\n### h3\n\nParagraph\n\nand another paragraph with **bolding**, *italics*, and ***both***\n\n- unordered\n- lists\n\n[Cool link](https://battleaxe.co)\n\n![title](https://framerusercontent.com/images/uQ1zOwgPYJv5GXFg6eYrwwFJc.jpg | 400)\n\n![video](https://battleaxe.dev/servile/homepage-rubberhose.mp4 | autoplay loop muted playsinline)\n\n![iframe](https://rive.app/s/lzQitSovT0KlfSEuapkutA/embed | 400 400)"
+      },
+      {
         "version": "0.3.2",
         "date": "2024-06-10",
         "notes": "Ae group layers take the Null label color"
