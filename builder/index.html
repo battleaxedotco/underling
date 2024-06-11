@@ -143,6 +143,9 @@
     h1, h2, h3 {
       margin: 0;
     }
+    ul {
+      padding-inline-start: 12px;
+    }
   </style>
 </head>
 
@@ -274,6 +277,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
   <script>
+    
 
 
     new Vue({
@@ -313,20 +317,31 @@
         parseMarkdown(text) {
           // parse markdown to html
           const toHTML = text
+            .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>') // bold text
+            .replace(/\*(.*?)\*/gim, '<em>$1</em>') // italic text
+            
             .replace(/^### (.*$)/gim, '<h3>$1</h3>') // h3 tag
             .replace(/^## (.*$)/gim, '<h2>$1</h2>') // h2 tag
             .replace(/^# (.*$)/gim, '<h1>$1</h1>') // h1 tag
-            .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>') // bold text
-            .replace(/\*(.*)\*/gim, '<i>$1</i>') // italic text
-            // if are 2 line breaks and lines with dashes, group each line with a dash until the end of the string or the next 2 line breaks within a ul and li for each line
             .replace(/(\r\n|\r|\n){2}(- .*(\r\n|\r|\n))+/g, (match) => {
               const lines = match.split(/(\r\n|\r|\n)/);
               const listItems = lines.filter((line) => line.trim() !== '').map((line) => line.replace(/(- )/, '<li>').replace(/(\r\n|\r|\n)/, '</li>')).join('');
               return `<ul>${listItems}</ul>`;
             })
-            // if surrounded by ` characters, replace with code tags
+            // ![rive](https://rive.app/s/lzQitSovT0KlfSEuapkutA/ | 300 400) iframe -> <div style="width: 300px; height: 410px"><iframe src="https://rive.app/s/lzQitSovT0KlfSEuapkutA/embed" width="100%" height="400px"></iframe><div>
+            .replace(/!\[iframe\]\((.*)\s\|\s(.*)\s(.*)\)/gim, '<div style="width: $2px; height: $3px"><iframe src="$1" width="100%" height="100%" style="border:none"></iframe></div>')
+            .replace(/!\[video\]\((.*)\s\|\s(.*)\)/gim, '<div><video width="100%" src="$1" $2/></div>')
+
+            // ![title](https://framerusercontent.com/images/uQ1zOwgPYJv5GXFg6eYrwwFJc.jpg | 300) -> <img src="https://framerusercontent.com/images/uQ1zOwgPYJv5GXFg6eYrwwFJc.jpg" alt="title" width="300">
+            .replace(/!\[(.*)\]\((.*)\s\|\s(.*)\)/gim, '<div><img src="$2" alt="$1" width="$3"></div>')
+
+
+            //[Cool link](https://battleaxe.co) that doesn't start with a ! -> <a href="https://battleaxe.co">Cool link</a>
+            .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>') // links
             .replace(/`([^`]+)`/gim, '<code>$1</code>')
-            .replace(/(?:\r\n|\r|\n)/g, '<br>')
+            .replace(/(?:\r\n|\r|\n){2}(.+?)(?:\r\n|\r|\n)/g, '<p>$1</p>')
+            .replace(/  $/gm, '<br>')
+            
           return toHTML.trim(); // using trim method to remove whitespace
         },
         incrementMinor(group) {
