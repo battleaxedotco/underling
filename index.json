@@ -5,6 +5,11 @@
     "notes": "Update notifications in app",
     "patches": [
       {
+        "version": "0.3.5",
+        "date": "2024-06-12",
+        "notes": "Install Figma plugin from app"
+      },
+      {
         "version": "0.3.4",
         "date": "2024-06-11",
         "notes": "\n\n- Better offline handling\n- Group colors also for Figma frames\n- Markdown parsing for update list\n"
