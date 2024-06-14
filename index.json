@@ -5,6 +5,11 @@
     "notes": "Update notifications in app",
     "patches": [
       {
+        "version": "0.3.7",
+        "date": "2024-06-14",
+        "notes": "\n\n- Skip empty fills (`Error on line 2580`)\n- Round tracking values (`Error on line 569`)\n\n"
+      },
+      {
         "version": "0.3.6",
         "date": "2024-06-13",
         "notes": "\n\n- Moved docs to Google and links to shortlinks for easier updating \n- Fixed grouping button tooltips \n\n"
