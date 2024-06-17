@@ -5,6 +5,11 @@
     "notes": "Update notifications in app",
     "patches": [
       {
+        "version": "0.3.8",
+        "date": "2024-06-17",
+        "notes": "\n\n- Separate Kerning and Tracking from Ai\n- Start at login option\n- Keep plugin/extension up to date option\n\n"
+      },
+      {
         "version": "0.3.7",
         "date": "2024-06-14",
         "notes": "\n\n- Skip empty fills (`Error on line 2580`)\n- Round tracking values (`Error on line 569`)\n\n"
