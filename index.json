@@ -5,6 +5,11 @@
     "notes": "Update notifications in app",
     "patches": [
       {
+        "version": "0.3.9",
+        "date": "2024-06-19",
+        "notes": "\n\n- Swap artboard creation buttons \n- Add additional folder path permissions to app\n- Add error logging to CEP installation\n\n"
+      },
+      {
         "version": "0.3.8",
         "date": "2024-06-17",
         "notes": "\n\n- Separate Kerning and Tracking from Ai\n- Start at login option\n- Keep plugin/extension up to date option\n\n"
