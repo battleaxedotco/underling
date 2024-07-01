@@ -1,77 +1,53 @@
-[
-  {
-    "version": "0.3.0",
-    "date": "2024-06-10",
-    "notes": "Update notifications in app",
-    "patches": [
-      {
-        "version": "0.3.9",
-        "date": "2024-06-19",
-        "notes": "\n\n- Swap artboard creation buttons \n- Add additional folder path permissions to app\n- Add error logging to CEP installation\n\n"
-      },
-      {
-        "version": "0.3.8",
-        "date": "2024-06-17",
-        "notes": "\n\n- Separate Kerning and Tracking from Ai\n- Start at login option\n- Keep plugin/extension up to date option\n\n"
-      },
-      {
-        "version": "0.3.7",
-        "date": "2024-06-14",
-        "notes": "\n\n- Skip empty fills (`Error on line 2580`)\n- Round tracking values (`Error on line 569`)\n\n"
-      },
-      {
-        "version": "0.3.6",
-        "date": "2024-06-13",
-        "notes": "\n\n- Moved docs to Google and links to shortlinks for easier updating \n- Fixed grouping button tooltips \n\n"
-      },
-      {
-        "version": "0.3.5",
-        "date": "2024-06-12",
-        "notes": "Install Figma plugin from app"
-      },
-      {
-        "version": "0.3.4",
-        "date": "2024-06-11",
-        "notes": "\n\n- Better offline handling\n- Group colors also for Figma frames\n- Markdown parsing for update list\n"
-      },
-      {
-        "version": "0.3.3",
-        "date": "2024-06-11",
-        "notes": "# Markdown\n## Parsing\n### h3\n\nParagraph\n\nand another paragraph with **bolding**, *italics*, and ***both***\n\n- unordered\n- lists\n\n[Cool link](https://battleaxe.co)\n\n![title](https://framerusercontent.com/images/uQ1zOwgPYJv5GXFg6eYrwwFJc.jpg | 400)\n\n![video](https://battleaxe.dev/servile/homepage-rubberhose.mp4 | autoplay loop muted playsinline)\n\n![iframe](https://rive.app/s/lzQitSovT0KlfSEuapkutA/embed | 400 400)"
-      },
-      {
-        "version": "0.3.2",
-        "date": "2024-06-10",
-        "notes": "Ae group layers take the Null label color"
-      },
-      {
-        "version": "0.3.1",
-        "date": "2024-06-10",
-        "notes": "Make `latestAvailableVersion` reactive"
-      }
-    ]
-  },
-  {
-    "version": "0.2.0",
-    "date": "2024-06-04",
-    "notes": "App-based communication system and a look to the future.\n\n- Windows code certification\n- test\n",
-    "patches": [
-      {
-        "version": "0.2.3",
-        "date": "2024-06-05",
-        "notes": "Lock app for only beta testers"
-      },
-      {
-        "version": "0.2.1",
-        "date": "2024-06-04",
-        "notes": "AE grouping buttons"
-      }
-    ]
-  },
-  {
-    "version": "0.1.0",
-    "date": "2024-05-07",
-    "notes": "Alpha release",
-    "patches": []
+{
+  "releases": [
+    {
+      "version": "0.4.0",
+      "date": "2024-06-30",
+      "title": "Transfer from Figma",
+      "body": "Designers love Figma. And now it is possible to transfer designs right into After Effects. It's a lot like AEUX (because we built that too), but it's actually maintained and working great. ",
+      "url": "https://battleaxe.co"
+    },
+    {
+      "version": "0.4.0",
+      "date": "2024-06-12",
+      "title": "Keyboard shortcuts",
+      "body": "One of the most requested features is finally here. Transfer layers between apps without even touching the mouse",
+      "url": ""
+    },
+    {
+      "version": "0.4.0",
+      "date": "2024-05-22",
+      "title": "Rasterize layers from Ai",
+      "body": "Some layer are just to complex for Ae to draw with shape layers. Export them as PNGs by adding a `*` to the start of the layer name.",
+      "url": "https://battleaxe.co"
+    },
+    {
+      "version": "0.4.0",
+      "date": "2024-05-05",
+      "title": "Image exporting from Ai",
+      "body": "Transfer embedded images from Ai to Ae. Finally!",
+      "url": "https://battleaxe.co"
+    },
+    {
+      "version": "0.3.0",
+      "date": "2024-04-13",
+      "title": "Per-character text styling",
+      "body": "Until very recently, it was not possible to read the style changes, colors and kerning of individual Ai text layers. We fixed that with some new Adobe updates. Supported in Ae 24.3+.",
+      "url": "https://battleaxe.co"
+    },
+    {
+      "version": "0.3.0",
+      "date": "2024-03-20",
+      "unlocked": true,
+      "title": "Accurate gradients",
+      "body": "Gradient end points from Ai used to get weird if you rotated the shape. They are solid as a rock now.",
+      "url": "https://battleaxe.co"
+    }
+  ],
+  "news": [],
+  "betaNews": [],
+  "betaIcons": {
+    "AEFT": 24.6,
+    "ILST": 28.7
   }
-]
+}
