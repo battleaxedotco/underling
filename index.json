@@ -1,50 +1,38 @@
 {
   "releases": [
     {
-      "version": "0.4.0",
-      "date": "2024-06-30",
-      "title": "Transfer from Figma",
-      "body": "Designers love Figma. And now it is possible to transfer designs right into After Effects. It's a lot like AEUX (because we built that too), but it's actually maintained and working great. ",
-      "url": "https://battleaxe.co"
-    },
-    {
-      "version": "0.4.0",
-      "date": "2024-06-12",
-      "title": "Keyboard shortcuts",
-      "body": "One of the most requested features is finally here. Transfer layers between apps without even touching the mouse",
-      "url": ""
-    },
-    {
-      "version": "0.4.0",
-      "date": "2024-05-22",
-      "title": "Rasterize layers from Ai",
-      "body": "Some layer are just to complex for Ae to draw with shape layers. Export them as PNGs by adding a `*` to the start of the layer name.",
-      "url": "https://battleaxe.co"
-    },
-    {
-      "version": "0.4.0",
-      "date": "2024-05-05",
-      "title": "Image exporting from Ai",
-      "body": "Transfer embedded images from Ai to Ae. Finally!",
-      "url": "https://battleaxe.co"
-    },
-    {
-      "version": "0.3.0",
-      "date": "2024-04-13",
-      "title": "Per-character text styling",
-      "body": "Until very recently, it was not possible to read the style changes, colors and kerning of individual Ai text layers. We fixed that with some new Adobe updates. Supported in Ae 24.3+.",
-      "url": "https://battleaxe.co"
-    },
-    {
-      "version": "0.3.0",
-      "date": "2024-03-20",
+      "version": "2.0.0",
+      "date": "2024-07-29",
       "unlocked": true,
-      "title": "Accurate gradients",
-      "body": "Gradient end points from Ai used to get weird if you rotated the shape. They are solid as a rock now.",
+      "title": "Quality of life in 2.0",
+      "body": "Shapes in Illustrator can often be too complicated for Ae to draw. Now when Overlord hits one of these shapes, it will automatically expand it, get the data, and then return it to its editable state in Illustrator.",
+      "url": "https://battleaxe.co"
+    },
+    {
+      "version": "2.0.0",
+      "date": "2024-07-21",
+      "unlocked": true,
+      "title": "Non-destructive shape expanding",
+      "body": "Shapes in Illustrator can often be too complicated for Ae to draw. Now when Overlord hits one of these shapes, it will automatically expand it, get the data, and then return it to its editable state in Illustrator.",
+      "url": "https://battleaxe.co"
+    },
+    {
+      "version": "2.0.0",
+      "date": "2024-07-05",
+      "title": "Clipping masks",
+      "unlocked": false,
+      "body": "Shapes in Illustrator can often be too complicated for Ae to draw. Now when Overlord hits one of these shapes, it will automatically expand it, get the data, and then return it to its editable state in Illustrator.",
       "url": "https://battleaxe.co"
     }
   ],
-  "news": [],
+  "news": [
+    {
+      "title": "New ways to transfer",
+      "date": "2024-07-21",
+      "body": "![iframe](https://www.youtube.com/embed/Y87yoC7yl8M?si=NFBP3F3nRt4TFXEj | 520 292)",
+      "url": "https://battleaxe.co/docs/overlord-v2-workflow"
+    }
+  ],
   "betaNews": [],
   "betaIcons": {
     "AEFT": 24.6,
