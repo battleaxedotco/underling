@@ -5,8 +5,8 @@
       "date": "2024-07-29",
       "unlocked": true,
       "title": "Quality of life in 2.0",
-      "body": "Shapes in Illustrator can often be too complicated for Ae to draw. Now when Overlord hits one of these shapes, it will automatically expand it, get the data, and then return it to its editable state in Illustrator.",
-      "url": "https://battleaxe.co"
+      "body": "Version 2 is here and opens up a world of simplicity for working between Illustrator and After Effects. \n\n- More intuitive layer creation from groups\n- Split all shapes to layers with parenting hierarchy\n- Precompose and Decompose groups \n- Modernization for working with new Ae systems\n- Fixes\n",
+      "url": "https://youtu.be/53Lm2kZ10-0?si=MhroHENywFqWXR9p"
     },
     {
       "version": "2.0.0",
@@ -14,19 +14,18 @@
       "unlocked": true,
       "title": "Non-destructive shape expanding",
       "body": "Shapes in Illustrator can often be too complicated for Ae to draw. Now when Overlord hits one of these shapes, it will automatically expand it, get the data, and then return it to its editable state in Illustrator.",
-      "url": "https://battleaxe.co"
+      "url": "https://youtu.be/53Lm2kZ10-0?si=MhroHENywFqWXR9p&t=312"
     },
     {
       "version": "2.0.0",
       "date": "2024-07-05",
       "title": "Clipping masks",
-      "unlocked": false,
+      "unlocked": true,
       "body": "Shapes in Illustrator can often be too complicated for Ae to draw. Now when Overlord hits one of these shapes, it will automatically expand it, get the data, and then return it to its editable state in Illustrator.",
-      "url": "https://battleaxe.co"
+      "url": "https://youtu.be/53Lm2kZ10-0?si=MhroHENywFqWXR9p&t=163"
     }
   ],
-  "news": [
-  ],
+  "news": [],
   "betaNews": [],
   "betaIcons": {
     "AEFT": 24.6,
