@@ -21,7 +21,7 @@
       "date": "2024-07-05",
       "title": "Clipping masks",
       "unlocked": true,
-      "body": "Shapes in Illustrator can often be too complicated for Ae to draw. Now when Overlord hits one of these shapes, it will automatically expand it, get the data, and then return it to its editable state in Illustrator.",
+      "body": "Thanks to the new universal track matte system in After Effects, it is now possible to replicate clipping masks with much greater accuracy. ",
       "url": "https://youtu.be/53Lm2kZ10-0?si=MhroHENywFqWXR9p&t=163"
     }
   ],
