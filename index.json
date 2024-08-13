@@ -1,6 +1,14 @@
 {
   "releases": [
     {
+      "title": "Import Ai file",
+      "body": "Import Ai files with Overlord. For when art can't, or shouldn't be a shape layer. One click brings the current Illustrator file into After Effects as layers. ",
+      "version": "2.1.0",
+      "date": "2024-08-13",
+      "url": "https://lore.battleaxe.co/import-ai-file/",
+      "unlocked": false
+    },
+    {
       "version": "2.0.0",
       "date": "2024-07-29",
       "unlocked": true,
