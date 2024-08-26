@@ -1,6 +1,14 @@
 {
   "releases": [
     {
+      "title": "Per-character text styling",
+      "body": "Editable text from Ai to Ae is only possible with Overlord, now with kerning, multiple fonts, weights, sizes, colors and any other text style attribute you can think of.",
+      "version": "2.2.0",
+      "date": "2024-08-26",
+      "url": "https://lore.battleaxe.co/per-character-styling",
+      "unlocked": false
+    },
+    {
       "title": "Import Ai file",
       "body": "Import Ai files with Overlord. For when art can't, or shouldn't be a shape layer. One click brings the current Illustrator file into After Effects as layers. ",
       "version": "2.1.0",
@@ -36,7 +44,7 @@
   "news": [],
   "betaNews": [],
   "betaIcons": {
-    "AEFT": 24.6,
+    "AEFT": 24.7,
     "ILST": 28.7
   }
 }
