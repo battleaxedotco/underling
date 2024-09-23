@@ -1,6 +1,14 @@
 {
   "releases": [
     {
+      "title": "Image export",
+      "body": "Overlord can now export images from Illustrator artboards. Select elements and push/pull to Ae and images on disk will be imported automatically. Images that are missing from the disk will be rasterized and imported with shapes.",
+      "version": "2.3.0",
+      "date": "2024-09-23",
+      "url": "https://lore.battleaxe.co/overlord-image-export",
+      "unlocked": false
+    },
+    {
       "title": "Per-character text styling",
       "body": "Editable text from Ai to Ae is only possible with Overlord, now with kerning, multiple fonts, weights, sizes, colors and any other text style attribute you can think of.",
       "version": "2.2.0",
