@@ -1,6 +1,14 @@
 {
   "releases": [
     {
+      "title": "Figma connection",
+      "body": "The wait is over. Figma is now connected to Overlord. The power of bringing Ai art into After Effects is just as simple when working in Figma –for both web and desktop versions. Vector shapes, text layers, and images are all there. If you used AEUX before, you are gonna like this. ",
+      "version": "2.4.0",
+      "date": "2024-11-11",
+      "url": "https://lore.battleaxe.co/figma-overlord",
+      "unlocked": false
+    },
+    {
       "title": "Image export",
       "body": "Overlord can now export images from Illustrator artboards. Select elements and push/pull to Ae and images on disk will be imported automatically. Images that are missing from the disk will be rasterized and imported with shapes.",
       "version": "2.3.0",
