@@ -1,6 +1,14 @@
 {
   "releases": [
     {
+      "title": "Rasterize selection",
+      "body": "Select elements in Figma or Illustrator and transfer to Ae as a rasterized PNG.\n\nWorking with vectors can sometimes generate elements that are too complicated for After Effects to draw with shape layers, or maybe require a dozens (or hundreds) of paths to draw correctly. Whether working with background layers or simply an element that only needs layer transforms, **Rasterize** is a new super power for working between apps. ",
+      "version": "2.5.0",
+      "date": "2025-02-03",
+      "url": "https://battleaxe.co/docs/overlord-rasterize",
+      "unlocked": false
+    },
+    {
       "title": "Figma connection",
       "body": "The wait is over. Figma is now connected to Overlord. The power of bringing Ai art into After Effects is just as simple when working in Figma –for both web and desktop versions. Vector shapes, text layers, and images are all there. If you used AEUX before, you are gonna like this. ",
       "version": "2.4.0",
