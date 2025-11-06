@@ -216,7 +216,7 @@
             <div class="data">
               <div v-if="editing != `news-url-${idx}`">
                 <div class="edit-button" v-html="editButton()" @click="editBlock(`news-url-${idx}`)"></div>
-                <p>{{ release.url }}</p>
+                <p>{{ release.url || 'URL' }}</p>
               </div>
               <div v-else>
                 <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`news-url-${idx}`)"></div>
@@ -291,7 +291,7 @@
             <div class="data">
               <div v-if="editing != `betanews-url-${idx}`">
                 <div class="edit-button" v-html="editButton()" @click="editBlock(`betanews-url-${idx}`)"></div>
-                <p>{{ release.url }}</p>
+                <p>{{ release.url || 'URL' }}</p>
               </div>
               <div v-else>
                 <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`betanews-url-${idx}`)"></div>
@@ -379,7 +379,7 @@
             <div class="data">
               <div v-if="editing != `release-url-${idx}`">
                 <div class="edit-button" v-html="editButton()" @click="editBlock(`release-url-${idx}`)"></div>
-                <p>{{ release.url }}</p>
+                <p>{{ release.url || 'URL'}}</p>
               </div>
               <div v-else>
                 <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`release-url-${idx}`)"></div>
@@ -553,7 +553,7 @@
             <div class="data">
               <div v-if="editing != `release-url-${idx}`">
                 <div class="edit-button" v-html="editButton()" @click="editBlock(`release-url-${idx}`)"></div>
-                <p>{{ release.url }}</p>
+                <p>{{ release.url || 'URL' }}</p>
               </div>
               <div v-else>
                 <div class="edit-button save-button" v-html="saveButton()" @click="editBlock(`release-url-${idx}`)"></div>
@@ -634,30 +634,43 @@
         parseMarkdown(text) {
           // parse markdown to html
           const toHTML = text
-            .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>') // bold text
-            .replace(/\*(.*?)\*/gim, '<em>$1</em>') // italic text
+            .replace(/\*\*(.*?)\*\*/gim, "<strong>$1</strong>") // bold text
+            .replace(/\*(.*?)\*/gim, "<em>$1</em>") // italic text
+            .replace(/_(.*?)_/gim, "<em>$1</em>") // italic text with underscores
+            .replace(/~~(.*?)~~/gim, "<del>$1</del>") // strikethrough text
 
-            .replace(/^### (.*$)/gim, '<h3>$1</h3>') // h3 tag
-            .replace(/^## (.*$)/gim, '<h2>$1</h2>') // h2 tag
-            .replace(/^# (.*$)/gim, '<h1>$1</h1>') // h1 tag
+            .replace(/^### (.*$)/gim, "<h3>$1</h3>") // h3 tag
+            .replace(/^## (.*$)/gim, "<h2>$1</h2>") // h2 tag
+            .replace(/^# (.*$)/gim, "<h1>$1</h1>") // h1 tag
 
             // a line that starts with a dash space -> <li>...</li>. the first one starts with a <ul> tag. the last one ends with a </ul> tag
-            .replace(/^\s*-\s(.*)$/gim, '<li>$1</li>')
-            .replace(/^\s*-\s(.*)$/gim, '<ul>$1</ul>')
+            .replace(/^\s*-\s(.*)$/gim, "<li>$1</li>")
+            .replace(/^\s*-\s(.*)$/gim, "<ul>$1</ul>")
 
             // ![rive](https://rive.app/s/lzQitSovT0KlfSEuapkutA/ | 300 400) iframe -> <div style="width: 300px; height: 410px"><iframe src="https://rive.app/s/lzQitSovT0KlfSEuapkutA/embed" width="100%" height="400px"></iframe><div>
-            .replace(/!\[iframe\]\((.*)\s\|\s(.*)\s(.*)\)/gim, '<div style="width: $2px; height: $3px"><iframe src="$1?rel=0&amp;controls=0&amp;color=white" width="100%" height="100%" style="border:none"></iframe></div>')
-            .replace(/!\[video\]\((.*)\s\|\s(.*)\)/gim, '<div><video width="100%" src="$1" $2/></div>')
+            .replace(
+              /!\[iframe\]\((.*)\s\|\s(.*)\s(.*)\)/gim,
+              '<div style="width: $2px; height: $3px"><iframe src="$1" width="100%" height="100%" style="border:none"></iframe></div>',
+            )
+            .replace(
+              /!\[video\]\((.*)\s\|\s(.*)\)/gim,
+              '<div><video width="100%" src="$1" $2/></div>',
+            )
 
             // ![title](https://framerusercontent.com/images/uQ1zOwgPYJv5GXFg6eYrwwFJc.jpg | 300) -> <img src="https://framerusercontent.com/images/uQ1zOwgPYJv5GXFg6eYrwwFJc.jpg" alt="title" width="300">
-            .replace(/!\[(.*)\]\((.*)\s\|\s(.*)\)/gim, '<div><img src="$2" alt="$1" width="$3"></div>')
-
+            .replace(
+              /!\[(.*)\]\((.*)\s\|\s(.*)\)/gim,
+              '<div><img src="$2" alt="$1" width="$3"></div>',
+            )
 
             //[Cool link](https://battleaxe.co) that doesn't start with a ! -> <a href="https://battleaxe.co">Cool link</a>
             .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>') // links
-            .replace(/`([^`]+)`/gim, '<code>$1</code>')
-            .replace(/(?:\r\n|\r|\n){2}(.+?)(?:\r\n|\r|\n)/g, '<p>$1</p>')
-            .replace(/  $/gm, '<br>')
+            .replace(/`([^`]+)`/gim, "<code>$1</code>")
+            .replace(/(?:\r\n|\r|\n){2}(.+?)(?:\r\n|\r|\n)/g, "<p>$1</p>")
+            // blocks of text are wrapped in <p> tags
+            .replace(/^(?!<h1>|<h2>|<h3>|<ul>|<li>|<p>|<img|<div|<iframe|<video|<code|<strong|<em|<del)(.+)$/gm, "<p>$1</p>")
+            // if there are two spaces at the end of a line, replace with <br>
+            .replace(/  $/gm, "<br>");
 
           return toHTML.trim(); // using trim method to remove whitespace
         },
