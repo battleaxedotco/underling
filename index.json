@@ -1,6 +1,14 @@
 {
   "releases": [
     {
+      "title": "Photoshop connection",
+      "body": "The simplicity of transferring layers as you need them has finally come to **Photoshop**, and it's even better than we had hoped. All Ps layer types with more flexibility that any kind of native import:\n\n- Image layers\n- Text *(with per-character styling)*\n- Adjustment layers\n- Masks *(clipping, pixel, vector)*\n- Vectors + gradients\n- Layer styles\n\nWe have been dreaming about this level of connection for years. ",
+      "version": "2.6.0",
+      "date": "2025-11-10",
+      "url": "https://lore.battleaxe.co/photoshop-overlord",
+      "unlocked": false
+    },
+    {
       "title": "Rasterize selection",
       "body": "Select elements in Figma or Illustrator and transfer to Ae as a rasterized PNG.\n\nWorking with vectors can sometimes generate elements that are too complicated for After Effects to draw with shape layers, or maybe require a dozens (or hundreds) of paths to draw correctly. Whether working with background layers or simply an element that only needs layer transforms, **Rasterize** is a new super power for working between apps. ",
       "version": "2.5.0",
