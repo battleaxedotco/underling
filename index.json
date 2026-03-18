@@ -1,6 +1,14 @@
 {
   "releases": [
     {
+      "title": "Ps frame sequence",
+      "body": "Long ago, the Timelord ascended from the mist to ferry wayward frame sequences from Photoshop to Overlord. The age of the Timelord has ended, and so many beautifully drawn frames have no way to become the elements of beautiful compositions. \n\nFrame sequence rendering has returned to Photoshop, and it's in Overlord. And it's a whole lot faster than before (like 8x faster). ",
+      "version": "2.7.0",
+      "date": "2026-03-17",
+      "url": "https://lore.battleaxe.co/timelord-frames/",
+      "unlocked": false
+    },
+    {
       "title": "Photoshop connection",
       "body": "The simplicity of transferring layers as you need them has finally come to **Photoshop**, and it's even better than we had hoped. All Ps layer types with more flexibility that any kind of native import:\n\n- Image layers\n- Text *(with per-character styling)*\n- Adjustment layers\n- Masks *(clipping, pixel, vector)*\n- Vectors + gradients\n- Layer styles\n\nWe have been dreaming about this level of connection for years. ",
       "version": "2.6.0",
@@ -76,7 +84,7 @@
   "news": [],
   "betaNews": [],
   "betaIcons": {
-    "AEFT": "26.2",
-    "ILST": "30.3"
+    "AEFT": "26.3",
+    "ILST": "30.4"
   }
 }
