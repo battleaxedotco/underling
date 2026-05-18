@@ -1,6 +1,14 @@
 {
   "releases": [
     {
+      "title": "Variable fonts (Ai/Ps)",
+      "body": "Transfer common font axes from Illustrator and Photoshop in After Effects as text animators ready for keyframes. The possibilities for text layer customization just got a lot deeper.",
+      "version": "2.7.1",
+      "date": "2026-05-18",
+      "url": "https://lore.battleaxe.co/svg-vs-overlord-variable-font-axes/",
+      "unlocked": false
+    },
+    {
       "title": "Ps frame sequence",
       "body": "Long ago, the Timelord ascended from the mist to ferry wayward frame sequences from Photoshop to Overlord. The age of the Timelord has ended, and so many beautifully drawn frames have no way to become the elements of beautiful compositions. \n\nFrame sequence rendering has returned to Photoshop, and it's in Overlord. And it's a whole lot faster than before (like 8x faster). ",
       "version": "2.7.0",
