@@ -1,7 +1,7 @@
 {
     "releases": [
         {
-            "title": "Ai → Figma",
+            "title": "Illustrator → Figma",
             "body": "Whether you collaborate with a team in Figma but do your vector work in Illustrator or you're migrating Illustrator designs to Figma, the newest Overlord connection is for you.\n\nPush designs and elements with more edibility than pasting alone.",
             "version": "2.8.0",
             "date": "2026-07-31",
@@ -42,7 +42,7 @@
         },
         {
             "title": "Figma connection",
-            "body": "The wait is over. Figma is now connected to Overlord. The power of bringing Ai art into After Effects is just as simple when working in Figma –for both web and desktop versions. Vector shapes, text layers, and images are all there. If you used AEUX before, you are gonna like this. ",
+            "body": "The wait is over. Figma is now connected to Overlord. The power of bringing Illustrator art into After Effects is just as simple when working in Figma –for both web and desktop versions. Vector shapes, text layers, and images are all there. If you used AEUX before, you are gonna like this. ",
             "version": "2.4.0",
             "date": "2024-11-11",
             "url": "https://lore.battleaxe.co/figma-overlord",
@@ -58,15 +58,15 @@
         },
         {
             "title": "Per-character text styling",
-            "body": "Editable text from Ai to Ae is only possible with Overlord, now with kerning, multiple fonts, weights, sizes, colors and any other text style attribute you can think of.",
+            "body": "Editable text from Illustrator to After Effects is only possible with Overlord, now with kerning, multiple fonts, weights, sizes, colors and any other text style attribute you can think of.",
             "version": "2.2.0",
             "date": "2024-08-26",
             "url": "https://lore.battleaxe.co/per-character-styling",
             "unlocked": false
         },
         {
-            "title": "Import Ai file",
-            "body": "Import Ai files with Overlord. For when art can't, or shouldn't be a shape layer. One click brings the current Illustrator file into After Effects as layers. ",
+            "title": "Import .ai file",
+            "body": "Import Illustrator files with Overlord. For when art can't, or shouldn't be a shape layer. One click brings the current Illustrator file into After Effects as layers. ",
             "version": "2.1.0",
             "date": "2024-08-13",
             "url": "https://lore.battleaxe.co/import-ai-file/",
