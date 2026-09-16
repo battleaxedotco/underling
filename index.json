@@ -1,6 +1,14 @@
 {
     "releases": [
         {
+            "title": "Figma → Illustrator",
+            "body": "Prep designs from Figma for print inside of Adobe Illustrator, just like the print shop requested. Or continue editing with powerful vector tools thanks to editable text, images, masks, shape names and alignment. ",
+            "version": "2.9.0",
+            "date": "2026-09-15",
+            "url": "https://lore.battleaxe.co/figma-to-illustrator",
+            "unlocked": false
+        },
+        {
             "title": "Illustrator → Figma",
             "body": "Whether you collaborate with a team in Figma but do your vector work in Illustrator or you're migrating Illustrator designs to Figma, the newest Overlord connection is for you.\n\nPush designs and elements with more edibility than pasting alone.",
             "version": "2.8.0",
