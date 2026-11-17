@@ -1,6 +1,14 @@
 {
     "releases": [
         {
+            "title": "Figma ⇆ Photoshop",
+            "body": "Transfer stacks of images, text and vector layers to Photoshop then back to Figma for approval and ongoing collaboration. It might be the smoothest image transfer yet.",
+            "version": "2.10.0",
+            "date": "2026-11-17",
+            "url": "https://lore.battleaxe.co/figma-photoshop",
+            "unlocked": false
+        },
+        {
             "title": "Figma → Illustrator",
             "body": "Prep designs from Figma for print inside of Adobe Illustrator, just like the print shop requested. Or continue editing with powerful vector tools thanks to editable text, images, masks, shape names and alignment. ",
             "version": "2.9.0",
